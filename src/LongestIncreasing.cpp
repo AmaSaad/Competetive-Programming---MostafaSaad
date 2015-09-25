@@ -45,7 +45,7 @@ typedef long long ll;
 #define INF                         (int)1e9
 #define EPS                         1e-9
 #define PI 3.1415926535897932384626
-// Useful container manipulation / traversal macros
+// Useful container manipulation / traversal macros
 #define forall(i,a,b)               for(int i=a;i<b;i++)
 #define foreach(v, c)               for( typeof( (c).begin()) v = (c).begin();  v != (c).end(); ++v)
 #define in(a,b)                     ( (b).find(a) != (b).end())
@@ -61,53 +61,27 @@ typedef long long ll;
 #define REMIN(a,b) (a)=min((a),(b));
 #define FOREACH(i,t) for (typeof(t.begin()) i=t.begin(); i!=t.end(); i++) // traverse an STL data structure
 
-class MaxProduct {
+class LIS {
+    int n;
+    int * list;
 public:
-	int k;
-	int s;
-	int tracker[100][100];
+    void readInput() {
+        s(n);
+        printf("ok");
+        list = new int[n];
+        lp(i,n)
+        {
+            list[n] = s(list[n]);
+        }
+        lp(i, n){
+            printf("%d",list[i]);
+        }
 
-	void userInput() {
-		printf("Enter S");
-		s(s);
-		printf("Enter K");
-		s(k);
+    }
+    void solve() {
 
-	}
-	void solve() {
-		printf("Product is: %lld\n", this->solve(s, 0));
-		int remainder = s;
-		lp(i,k)
-		{
-			int value = tracker[i][remainder];
-			cout << value << "\n";
-			remainder-=value;
-		}
-	}
 
-	//assign optimal value at index i
-	ll solve(int remainder, int i) {
-		if (i == k-1) {
-			tracker[i][remainder] = remainder;
-
-			return remainder;
-
-		}
-		int max = remainder - (k-i-1);
-		ll product = 1;
-		ll maxProduct = 0;
-		int maxJ = 0;
-		for (int j = 1; j <= max; j++) {
-			product = j * solve(remainder - j, i+1);
-			if (product > maxProduct) {
-				maxProduct = product;
-				maxJ = j;
-			}
-		}
-		tracker[i][remainder] = maxJ;
-		return maxProduct;
-
-	}
-
+    }
 };
+
 
